@@ -1,39 +1,39 @@
-{% extends "bootstrap/base.html" %}
-{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home</title>
+	<!-- <link rel="stylesheet" type="text/css" href="../static/css/styles.css"> -->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
 
-<div class="container">
-  <div class="jumbotron" style="background-color:#1daeff !important;">
-    <h2 style="color:#fff;">Gender Classifier</h2>      
-    <p style="color:#fff;">Using Machine Learning to Classify Gender</p>
-  </div>
-  <p>ML App.</p>           
-</div>
+	<header>
+		<div class="container">
+		<div id="brandname">
+			ML App
+		</div>
+		<h2>Phishing detection</h2>
+		
+	</div>
+	</header>
 
+	<div class="ml-container">
 
-<div class="panel-group">
-    <div class="panel panel-primary">
-      <div class="panel-heading" style="background-color:#1563ff ">Gender Classifier</div>
-      <div class="panel-body">
-      
-<!-- Main Input For Receiving Query to our ML -->	
-      	<form action="{{ url_for('predict')}}" method="POST">
-			<input type="text" name="namequery">
-			<button type="submit" class="btn btn-primary">Predict</button>
-			</form>
+		<form action="{{ url_for('predict')}}" method="POST">
+		<p>Enter The Url Here</p>
+		<!-- <input type="text" name="comment"/> -->
+		<textarea name="comment" rows="4" cols="50"></textarea>
+		<br/>
 
-<!-- Main Input For Receiving Query to our ML --> 
+		<input type="submit" class="btn-info" value="predict">
+		
+	</form>
+		
+	</div>
 
+	
+	
 
-      </div>
-    </div>
+</body>
+</html>
 
-
-
-
-{% endblock %}
-
-{% block styles %}
-{{super()}} <!-- Allows Javascripts and other styles to be inclusive in bootstrap -->
-<link rel="stylesheet"
-      href="{{url_for('.static', filename='css/styles.css')}}">
-{% endblock %}
